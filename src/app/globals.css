@@ -36,6 +36,7 @@ h4 {
 
 
 .titulo {
+  margin-top: 15px;
   font-size: 24px;
   font-weight: bold;
   color: #ff5722;
@@ -44,6 +45,7 @@ h4 {
 
 /* Estilos para o tipo */
 .tipo {
+  margin-bottom: 15px;
   font-size: 18px;
   font-style: italic;
   color: #c8c9d3;
@@ -52,6 +54,8 @@ h4 {
 
 /* Estilos para a descrição */
 .sobre {
+  text-align: justify;
+  width: 65%;
   font-size: 16px;
   line-height: 1.5;
   color: #c8c9d3;
@@ -61,7 +65,7 @@ h4 {
 /* Estilos para o link */
 .link {
   display: inline-block;
-  padding: 8px 16px;
+  padding: 10px 20px;
   background-color: #007bff;
   /* Cor de fundo do link */
   color: #fff;
@@ -163,4 +167,11 @@ input[type="button"]:hover {
   font-size: 14px;
   color: #333;
   margin-bottom: 10px;
+}
+
+.detalhes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
