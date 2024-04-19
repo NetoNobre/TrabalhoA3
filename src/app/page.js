@@ -38,14 +38,19 @@ export default function Home() {
 
   return (
     <main>
+
+      <h1>Bifröst</h1>
+      <h4>
+"Desbloqueie o potencial infinito da sua criatividade com nossas ferramentas de software intuitivas. Transforme suas ideias em realidade, simplifique tarefas complexas e liberte sua imaginação. Junte-se a nós e experimente o poder da inovação em suas mãos. #InovaçãoSemLimites #TransformandoIdeiasEmRealidade ✨🖥️💡"</h4>
       <nav>
-        <input
+        <input className="pesquisa"
           type="text"
+          placeholder="Busque sua ferramenta"
           value={tituloFilter}
           onChange={({ target }) => setTituloFilter(target.value)}
         />
 
-        <select
+        <select className="selecionar"
           value={tipoFilter}
           onChange={({ target }) => setTipoFilter(target.value)}
         >
@@ -59,18 +64,19 @@ export default function Home() {
 
         <input type="button" onClick={() => setTipoFilter("")} value="Limpar" />
       </nav>
-
-      {data.map((ferramenta) => {
-        return (
-          <Card
-            key={ferramenta.id}
-            id={ferramenta.id}
-            tipo={ferramenta.tipo}
-            titulo={ferramenta.titulo}
-            sobre={ferramenta.sobre}
-          />
-        );
-      })}
+      <div className="container">
+        {data.map((ferramenta) => {
+          return (
+            <Card
+              key={ferramenta.id}
+              id={ferramenta.id}
+              tipo={ferramenta.tipo}
+              titulo={ferramenta.titulo}
+              sobre={ferramenta.sobre}
+            />
+          );
+        })}
+      </div>
     </main>
   );
 }
