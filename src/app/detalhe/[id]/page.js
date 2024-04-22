@@ -16,7 +16,7 @@ export default function Detalhe({ params }) {
       <h3 className="titulo">{ferramenta.titulo}</h3>
       <h5 className="tipo">{ferramenta.tipo}</h5>
       <p className="sobre">{ferramenta.sobre}</p>
-      <Link href={ferramenta.link} target="_blank">Download</Link>
+      <Link href={ferramenta.link} target="_blank">Acesse para download</Link>
     </div>
   );
 }
