@@ -24,7 +24,7 @@ function Help(props) {
       content: `Learn more using the [documentation on this site.](${docUrl(
         'doc1.html',
       )})`,
-      title: 'Browse Docs',
+      title: 'Alguma sugestão para melhoria do site?',
     },
     {
       content: 'Ask questions about the documentation and project',
