@@ -1,28 +1,28 @@
 {
   "label": "Homepage",
-  "title": "Hello from Tina + Docusaurus!",
+  "title": "Bem vindo à Bifrost",
   "description": "Description will go into a meta tag in <head />",
   "blocks": [
     {
       "document": "docs/intro.mdx",
-      "documentLabel": "Docusaurus Tutorial - 5min ⏱️",
+      "documentLabel": "Bifrost Tutorial - 10min ⏱️",
       "_template": "hero"
     },
     {
       "items": [
         {
-          "title": "Easy to Use",
-          "description": "Docusaurus was designed from the ground up to be easily installed and         used to get your website up and running quickly.\n",
+          "title": "Fácil de usar",
+          "description": "Bifrost foi designada para grupos de desenvolvedores/engenheiros de software com o intuito de facilitar o encontro e uso das principais ferramentas de desenvolvimento de software.\n",
           "image": "/img/undraw_docusaurus_mountain.svg"
         },
         {
-          "title": "Focus on What Matters",
-          "description": "Docusaurus lets you focus on your docs, and we'll do the chores. Go ahead and move your docs into the docs directory.\n",
+          "title": "Velocidade na Execução",
+          "description": "Devido à nossa lógica de negócio ser pensada em filtragem das principais ferramentas, isso torna nossa plataforma mais otimizada, trazendo assim, as ferramentas mais rápidas ao seu alcance.\n",
           "image": "/img/undraw_docusaurus_tree.svg"
         },
         {
-          "title": "Powered by React",
-          "description": "Extend or customize your website layout by reusing React. Docusaurus can         be extended while reusing the same header and footer.\n",
+          "title": "Desenvolvido em React",
+          "description": "Utilizamos React devido à facilidade de escrita e compreensão. Ele carrega muitas semelhanças ao JavaScript, sendo bem fácil e intuitivo o direcionamento do conhecimento já existente no profissional para a manipulação.\n",
           "image": "/img/undraw_docusaurus_react.svg"
         }
       ],

@@ -6,27 +6,27 @@
       "_template": "doc"
     },
     {
-      "title": "Tutorial - Basics",
+      "title": "Detalhes - Documentação",
       "link": "generated",
       "items": [
         {
-          "document": "docs/tutorial-basics/create-a-page.mdx",
+          "document": "docs/detalhes-documentacao/create-a-page.mdx",
           "_template": "doc"
         },
         {
-          "document": "docs/tutorial-basics/create-a-document.mdx",
+          "document": "docs/detalhes-documentacao/create-a-document.mdx",
           "_template": "doc"
         },
         {
-          "document": "docs/tutorial-basics/create-a-blog-post.mdx",
+          "document": "docs/detalhes-documentacao/create-a-blog-post.mdx",
           "_template": "doc"
         },
         {
-          "document": "docs/tutorial-basics/deploy-your-site.mdx",
+          "document": "docs/detalhes-documentacao/deploy-your-site.mdx",
           "_template": "doc"
         },
         {
-          "document": "docs/tutorial-basics/congratulations.mdx",
+          "document": "docs/detalhes-documentacao/congratulations.mdx",
           "_template": "doc"
         }
       ],
