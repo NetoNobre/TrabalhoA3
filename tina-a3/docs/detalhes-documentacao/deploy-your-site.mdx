@@ -4,28 +4,351 @@ title: Código-Fonte
 
 # Código-Fonte
 
-Docusaurus is a **static-site-generator** (also called **[Jamstack](https://jamstack.org/)**).
+Um código-fonte é um conjunto de instruções e declarações escritas por um programador em uma determinada linguagem de programação. Essas instruções são projetadas para serem compreensíveis por um ser humano e formam a base para a criação de programas de computador. O código fonte pode ser executado diretamente por um interpretador, ou os dados de origem podem ser compilados para criar um arquivo executável que é executado diretamente pela CPU de um computador. Em outras palavras, um código-fonte é a forma original do software antes de ser traduzido.
 
-It builds your site as simple **static HTML, JavaScript and CSS files**.
+## Lógica de negócio do filtro
 
-## Build your site
+ O trecho do código abaixo é parte da lógica de filtragem de uma aplicação React que gerencia uma lista de ferramentas. Ele utiliza dois hooks useEffect para atualizar o estado da aplicação com base nos filtros de tipo e título. Vamos detalhar cada parte:
 
-Build your site **for production**:
-
-```bash
-npm run build
 ```
+Primeiro useEffect
 
-The static files are generated in the `build` folder.
+useEffect(() => {
+  const listaTipo = [];
+  ferramentas.forEach((f) => {
+    if (listaTipo.indexOf(f.tipo) === -1) {
+      listaTipo.push(f.tipo);
+    }
+  });
+  setInputTipo(listaTipo);
+}, []);
 
-## Deploy your site
+```
+**Objetivo**: Este useEffect é responsável por gerar uma lista única de tipos de ferramentas a partir de uma coleção de ferramentas. Essa lista é então usada para atualizar o estado inputTipo.
 
-Test your production build locally:
+**Comportamento**:
+Dependências: A lista de dependências do useEffect está vazia ([]), o que significa que ele será executado apenas uma vez, quando o componente for montado.
 
-```bash
-npm run serve
+**Lógica**:
+- Uma lista vazia listaTipo é inicializada.
+- A função forEach itera sobre cada ferramenta em ferramentas.
+- Se o tipo da ferramenta (f.tipo) não estiver já presente em listaTipo, ele é adicionado à lista.
+- Após a iteração, a função setInputTipo é chamada para atualizar o estado inputTipo com listaTipo.
+
+
+
+```
+Segundo useEffect
+
+useEffect(() => {
+  let filteredData = ferramentas;
+
+  if (tituloFilter) {
+    filteredData = filteredData.filter((f) =>
+      f.titulo.toLowerCase().includes(tituloFilter.toLowerCase())
+    );
+  }
+
+  if (tipoFilter) {
+    filteredData = filteredData.filter((f) => f.tipo === tipoFilter);
+  }
+
+  setData(filteredData);
+}, [tituloFilter, tipoFilter]);
+
+```
+**Objetivo**: Este useEffect aplica filtros à lista de ferramentas com base nos valores dos filtros tituloFilter e tipoFilter, e atualiza o estado data com os resultados filtrados.
+
+**Comportamento**:
+
+- Dependências: Este useEffect depende dos estados tituloFilter e tipoFilter. Ele será executado sempre que um desses valores mudar.
+- Lógica:
+Inicialmente, filteredData é definido como a lista completa de ferramentas (ferramentas).
+- Filtro de Título:
+Se tituloFilter estiver definido (não for uma string vazia ou null), filteredData é atualizado para conter apenas as ferramentas cujo título (f.titulo) inclua o texto de tituloFilter, ignorando maiúsculas e minúsculas.
+- Filtro de Tipo:
+Se tipoFilter estiver definido, filteredData é atualizado novamente para conter apenas as ferramentas cujo tipo (f.tipo) seja igual a tipoFilter.
+Finalmente, a função setData é chamada para atualizar o estado data com os dados filtrados.
+
+# Em resumo: 
+
+- Primeiro useEffect: Gera uma lista única de tipos de ferramentas quando o componente é montado.
+- Segundo useEffect: Aplica filtros de título e tipo à lista de ferramentas sempre que os valores dos filtros mudam, e atualiza o estado com os resultados filtrados.
+
+## Lógica de Negócio para selecionar uma categoria de pesquisa
+
+O trecho de código abaixo faz parte de uma aplicação React que lida com a lógica de seleção e filtragem de categorias de pesquisa dentro de uma lista de ferramentas. Abaixo, está uma explicação detalhada das duas partes principais do código.
+
+```
+Primeira Parte: Seleção de Categoria
+
+useEffect(() => {
+  const listaTipo = [];
+  ferramentas.forEach((f) => {
+    if (listaTipo.indexOf(f.tipo) === -1) {
+      listaTipo.push(f.tipo);
+    }
+  });
+  setInputTipo(listaTipo);
+}, []);
+
+```
+**Objetivo**: Esta parte do código é responsável por extrair uma lista única de categorias (tipos) a partir da lista de ferramentas disponíveis.
+
+**Detalhamento**:
+- useEffect: Um hook que executa um efeito colateral. Com uma lista de dependências vazia ([]), este efeito é executado apenas uma vez, quando o componente é montado.
+- listaTipo: Um array inicializado vazio que armazenará os tipos únicos de ferramentas.
+- ferramentas.forEach((f) => { ... }): Itera sobre cada ferramenta na lista ferramentas.
+- if (listaTipo.indexOf(f.tipo) === -1): Verifica se o tipo da ferramenta (f.tipo) ainda não está presente em listaTipo.
+- listaTipo.push(f.tipo): Se o tipo não estiver presente, ele é adicionado a listaTipo.
+- setInputTipo(listaTipo): Atualiza o estado inputTipo com a lista de tipos únicos.
+**Resultado**: Após a execução, inputTipo contém todos os tipos únicos de ferramentas, que podem ser usados para criar um menu de seleção de categorias.
+
+```
+Segunda Parte: Lógica de Pesquisa
+
+useEffect(() => {
+  let filteredData = ferramentas;
+
+  if (tituloFilter) {
+    filteredData = filteredData.filter((f) =>
+      f.titulo.toLowerCase().includes(tituloFilter.toLowerCase())
+    );
+  }
+
+  setData(filteredData);
+}, [tituloFilter]);
+
+
+```
+**Objetivo**: Esta parte do código filtra a lista de ferramentas com base em um critério de pesquisa, especificamente um filtro de título.
+**Detalhamento**:
+- useEffect: Outro hook que executa um efeito colateral. Este efeito é executado sempre que o valor de tituloFilter muda, conforme indicado na lista de dependências [tituloFilter].
+- let filteredData = ferramentas: Inicializa filteredData com a lista completa de ferramentas.
+- if (tituloFilter): Verifica se há um filtro de título aplicado (tituloFilter não é uma string vazia ou null).
+- filteredData.filter((f) => ... ): Filtra filteredData para incluir apenas as ferramentas cujo título (f.titulo) contém a string tituloFilter, ignorando maiúsculas e minúsculas.
+- f.titulo.toLowerCase().includes(tituloFilter.toLowerCase()): Converte tanto o título da ferramenta quanto o filtro de título para minúsculas antes de verificar a inclusão, garantindo uma busca case-insensitive.
+
+**Resultado**: Sempre que tituloFilter é atualizado, data é atualizado para conter apenas as ferramentas cujos títulos correspondem ao filtro de pesquisa.
+
+# Em resumo
+- Primeira Parte (Seleção de Categoria): Cria uma lista única de categorias (tipos de ferramentas) a partir da lista de ferramentas e atualiza o estado correspondente.
+- Segunda Parte (Pesquisa): Filtra a lista de ferramentas com base em um filtro de título e atualiza o estado com os resultados filtrados.
+
+Esses dois hooks trabalham juntos para fornecer uma funcionalidade de filtragem dinâmica e eficiente na aplicação, permitindo que os usuários selecionem categorias de ferramentas e realizem buscas baseadas no título das ferramentas.
+
+## Lógica de Negócio para filtrar o tipo de ferramenta
+
+O trecho de código abaixo adiciona a lógica de filtragem de tipo de ferramenta à funcionalidade de pesquisa existente na aplicação React. Ele filtra a lista de ferramentas com base no tipo selecionado (tipoFilter).
+
+```
+Explicação do Código
+
+if (tipoFilter) {
+  filteredData = filteredData.filter((f) => f.tipo === tipoFilter);
+}
+
+```
+**Objetivo**: Filtrar a lista de ferramentas (filteredData) para incluir apenas aquelas que correspondem ao tipo especificado pelo filtro (tipoFilter).
+
+**Detalhamento**:
+
+- if (tipoFilter): Verifica se há um filtro de tipo definido. tipoFilter deve ser uma string não vazia ou um valor não nulo para que a condição seja verdadeira.
+- filteredData.filter((f) => f.tipo === tipoFilter):
+- filteredData: A lista de ferramentas que está sendo filtrada. Este array foi inicialmente definido como ferramentas e pode ter sido previamente filtrado por outros critérios, como um filtro de título.
+- filter((f) => f.tipo === tipoFilter): Aplica a função de filtro ao array filteredData. A função de filtro verifica cada ferramenta (f) e retorna apenas aquelas onde f.tipo é igual a tipoFilter.
+- f.tipo === tipoFilter: Compara o tipo da ferramenta (f.tipo) com o valor do filtro de tipo (tipoFilter). Se forem iguais, a ferramenta é incluída no array resultante.
+
+**Resultado**: filteredData é atualizado para incluir apenas as ferramentas que correspondem ao tipo especificado por tipoFilter.
+
+## Sobre o CSS
+
+Referente ao CSS, fizemos de forma responsiva, portanto, a plataforma se adequa perfeitamente às principais telas. Segue abaixo a estilização da nossa plataforma:
+
+```
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Rubik&family=Secular+One&family=VT323&display=swap');
+
+body {
+   background-color: #090415; 
+
+}
+
+main {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 14rem;
+  text-align: center;
+  color: #ff5722;
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+h4 {
+  left: auto;
+  right: auto;
+  width: 60%;
+  font-size: 1rem;
+  text-align: center;
+  color: #c8c9d3;
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Estilos para o título */
+
+
+.titulo {
+  margin-top: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff5722;
+  /* Cor do texto do título */
+}
+
+/* Estilos para o tipo */
+.tipo {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-style: italic;
+  color: #c8c9d3;
+  /* Cor do texto do tipo */
+}
+
+/* Estilos para a descrição */
+.sobre {
+  text-align: justify;
+  width: 65%;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #c8c9d3;
+  /* Cor do texto da descrição */
+}
+
+/* Estilos para o link */
+.link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  /* Cor de fundo do link */
+  color: #fff;
+  /* Cor do texto do link */
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.link:hover {
+  background-color: #0056b3;
+  /* Cor de fundo do link quando hover */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+nav {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 20px 0;
+}
+
+input[type="text"] {
+  padding: 8px;
+  font-size: 16px;
+  color: #2f303b;
+}
+
+.pesquisa {
+  margin: 5px;
+
+
+}
+
+.selecionar {
+  margin: 5px;
+  padding: 10px;
+
+}
+
+select {
+  padding: 8px;
+  font-size: 16px;
+}
+
+input[type="button"] {
+  padding: 10px 16px;
+  font-size: 16px;
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  background-color: #ff5722;
+}
+
+.card {
+  width: 300px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #c8c9d3;
+  border-radius: 4px;
+  background-color: #f8f8ff;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.03s ease;
+}
+
+.card:hover {
+  border-color: #5f9ea0;
+  /* Altere a cor desejada para o efeito de hover */
+}
+
+.card h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ff5722;
+
+}
+
+.card h5 {
+  font-size: 16px;
+  color: #2c1567;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.detalhes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
 ```
 
 The `build` folder is now served at [http://localhost:3000/](http://localhost:3000/).
+
+## 
 
 You can now deploy the `build` folder **almost anywhere** easily, **for free** or very small cost (read the **[Deployment Guide](https://docusaurus.io/docs/deployment)**).

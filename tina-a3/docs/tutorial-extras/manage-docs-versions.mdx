@@ -1,55 +1,115 @@
 ---
-title: Manage Docs Versions
+title: Histórico de Sprints
 ---
 
-# Manage Docs Versions
+## Histórico de Sprint
 
-Docusaurus can manage multiple versions of your docs.
+## 04/04 - Panorama Geral do Projeto: 1º Entrega
 
-## Create a docs version
+# Requisitos Funcionais
 
-Release a version 1.0 of your project:
+- Catalogo de Ferramentas: Oferecer um catálogo completo de ferramentas de engenharia de software, organizado por categorias como modelagem de processos, gestão de requisitos, testes de software, etc.
 
-```bash
-npm run docusaurus docs:version 1.0
-```
+- Busca Avançada: Implementar um mecanismo de busca avançada para que os usuários possam encontrar rapidamente as ferramentas relevantes com base em critérios como função, categoria, popularidade, etc.
 
-The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
+- Integração de Ferramentas: Permitir a integração com as ferramentas de engenharia de software mais utilizadas, facilitando o acesso a essas ferramentas a partir da plataforma
 
-Your docs now have 2 versions:
+- Avaliações e Comentários: Permitir que os usuários avaliem e comentem sobre as ferramentas, fornecendo feedback útil para outros usuários.
 
-- `1.0` at `http://localhost:3000/docs/` for the version 1.0 docs
-- `current` at `http://localhost:3000/docs/next/` for the **upcoming, unreleased docs**
+# Requisitos Não Funcionais
 
-## Add a Version Dropdown
+- Garantir que a plataforma seja rápida e responsiva
 
-To navigate seamlessly across versions, add a version dropdown.
+- Banco de Dados: MySQL
 
-Modify the `docusaurus.config.js` file:
+- Linguagens de Programação: HTML, CSS, JAVASCRIPT
 
-```js title="docusaurus.config.js"
-module.exports = {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: "docsVersionDropdown",
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
+- Biblioteca REACT
 
-The docs version dropdown appears in your navbar:
+- Priorizar a usabilidade e a experiência do usuário, garantindo que a plataforma seja intuitiva e fácil de usar
 
-![Docs Version Dropdown](/img/docs/docsVersionDropdown.png)
+- Disponibilidade: Assegurar que a plataforma esteja disponível e acessível para os usuários na maior parte do tempo, minimizando o tempo de inatividade para manutenção ou atualizações.
 
-## Update an existing version
+Modelo de Processo de Software
 
-It is possible to edit versioned docs in their respective folder:
+- Modelo Cascata
 
-- `versioned_docs/version-1.0/hello.md` updates `http://localhost:3000/docs/hello`
-- `docs/hello.md` updates `http://localhost:3000/docs/next/hello`
+Método para o Desenvolvimento de Software
+
+- Método da Metodologia Ágil: Kanban
+
+Ambiente de Desenvolvimento
+
+- IDE: VSCODE
+
+- Versionamento: Git/GitHub
+
+- Ferramentas de Engenharia de Software: Trello
+
+## 06/04 - Panorama Geral do Projeto: 2º Entrega
+
+# Escolher e justificar o modelo de processo de software mais adequado às necessidades do projeto:
+
+A escolha do modelo cascata se deu pois pela sua estrutura simples o modelo cascata é fácil de entender e usar. Ele segue uma abordagem linear e sequencial, o que simplifica o processo de desenvolvimento, e gerenciamento de projetos
+
+Além disso o uso do método cria uma documentação abrangente com cada fase tendo seus próprios documentos e artefatos associados, o modelo cascata tende a gerar uma documentação detalhada ao longo do ciclo de vida do projeto. Isso pode ser útil para referência futura, manutenção e treinamento de equipe.
+
+Em resumo facilita o controle de qualidade com cada fase tendo suas próprias etapas de verificação e validação, o controle de qualidade pode ser integrado em todo o ciclo de vida do projeto. Isso pode resultar em produtos finais mais consistentes e de maior qualidade.
+
+# Serão feitas Sprints com tempo médio de 5 a 8 dias para abordagem de tais temas:
+
+Autenticação e Gerenciamento de Usuários:
+
+- Implementar sistema de login e autenticação.
+
+- Permitir que os usuários criem e gerenciem seus perfis.
+
+- Cadastro e Gerenciamento de Ferramentas:
+
+- Permitir a categorização das ferramentas por tipo, categoria, e finalidade.
+
+- Desenvolver funcionalidade para pesquisar e filtrar ferramentas com base em diferentes critérios.
+
+Integração de Ferramentas Externas:
+
+- Integrar ferramentas populares de engenharia de software, como Git, Jira, Jenkins, etc.
+
+- Sincronizar dados relevantes entre a plataforma e as ferramentas externas.
+
+Recursos Avançados de Pesquisa e Análise:
+
+- Implementar um mecanismo de pesquisa avançado para encontrar ferramentas com base em critérios específicos.
+
+Suporte a Metodologias Ágeis:
+
+- Integrar ferramentas de framework ágil, como quadros Kanban.
+
+Interface do Usuário e Experiência do Usuário (UI/UX):
+
+- Design de uma interface intuitiva e fácil de usar para navegar e interagir com a plataforma.
+
+- Melhorar a experiência do usuário com feedback instantâneo, animações, etc.
+
+- Realizar testes de usabilidade para identificar e corrigir quaisquer problemas de interface ou fluxo de trabalho.
+
+Segurança e Desempenho:
+
+- Realizar auditorias de segurança e correções de vulnerabilidades identificadas.
+
+- Realizar otimizações de desempenho para garantir que a plataforma seja responsiva e escalável.
+
+## 08/04 - Revisão e Verificação
+
+Como todos os requisitos e verificações tinham sido atendidos, essa Sprint utilizamos para verificar se todos os requisitos tinham sido atendidos e se precisaria acrescentar mais ou remover algum requisito. Portanto, decidimos deixar o requisito de Banco de dados opcional, então, não utilizamos, porém pode ser usado e bem combinado.
+
+Decidimos também remover o requisito de "Comentários e feedbacks", porque o foco da plataforma é mostrar o catálogo com informações úteis para ferramentas. Portanto, ficaria algo irrelevante para a Bifrost.
+
+## 11/04 - Validação e Verificação
+
+Fizemos a validação para ter certeza se todos os requisitos foram atendidos e verificamos se estavam funcionando. 
+
+## 20/04 - Design, Testes e Ferramentas Funcionais do Site
+
+Fizemos os testes de pesquisa e funcionamento do filtro da plataforma e estavam funcionando corretamente. 
+
+O Design estava conforme o solicitado também.
