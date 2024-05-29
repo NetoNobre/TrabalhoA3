@@ -15,7 +15,7 @@ export const Hero = ({ data, index }) => {
     >
       <div className="container">
         <h1 className="hero__title">
-          {data.title ? data.title : siteConfig.title}
+         Bifrost
         </h1>
         <p className="hero__subtitle">
           {data.subtitle ? data.subtitle : siteConfig.tagline}
