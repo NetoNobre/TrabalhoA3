@@ -1,0 +1,13 @@
+INICIALIZAÇÃO DOCUMENTAÇÃO
+
+Para inicialização da documentação, o primeiro passo é:
+
+1 - No terminal, já na pasta principal que foi criado para clonar o repositório, você digitará o comando: cd tina-a3
+
+2- Feito isso, já na pasta tina-a3, execute o comando: npm install --save-dev docusaurus
+
+3 - Quando finalizado a instalação dos commponentes, execute o comando: npm start
+
+Através do comando "npm start", você irá abrir a documentação no seu navegador padrão. 
+
+Por fim, aproveite nosso projeto ;) 
